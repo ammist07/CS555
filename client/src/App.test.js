@@ -22,20 +22,12 @@ test('Login Page', () => {
   )
 })
 
-test('Login Page Form', () => {
+test('Signup Page Form', () => {
   render(
       <BrowserRouter>
-          <Login />
+          <Signup />
       </BrowserRouter>
   )
-  const username_input = screen.getByRole('textbox', { name: 'username password'})
+  const username_input = screen.getByRole('textbox', { name: 'name username password'})
   expect(username_input).toBeInTheDocument()
-})
-
-test('Signup Page', () => {
-    render(
-        <BrowserRouter>
-            <Signup />
-        </BrowserRouter>
-    )
 })
