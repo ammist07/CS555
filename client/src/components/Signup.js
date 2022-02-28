@@ -4,6 +4,16 @@ import {Link} from 'react-router-dom'
 
 const Signup = () => {
 
+    const [form, setForm] = useState({
+        name:'',
+        username:'',
+        password:'',
+    })
+    const [error, setError] = useState({
+        state: false,
+        message: ''
+    })
+    
     return (
         <div>
             <form>
@@ -16,5 +26,7 @@ const Signup = () => {
         </div>
     )
 }
+
+
 
 export default Signup
