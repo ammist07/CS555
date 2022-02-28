@@ -41,3 +41,19 @@ test('Login Page Form', () => {
   const username_input = screen.getByRole('textbox', { name: 'username password'})
   expect(username_input).toBeInTheDocument()
 })
+
+test('Signup Page', () => {
+  render(
+      <BrowserRouter>
+          <Signup />
+      </BrowserRouter>
+  )
+})
+test('Home Page', () => {
+
+  render(
+      <BrowserRouter>
+          <Home />
+      </BrowserRouter>
+  )
+})
