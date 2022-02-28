@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import App from './App'
 import Login from './components/Login'
-// import Signup from './components/Signup'
-// import Home from './components/Home'
+import Signup from './components/Signup'
+import Home from './components/Home'
 import { BrowserRouter } from 'react-router-dom'
 
 test('App Page', () => {
@@ -30,4 +30,12 @@ test('Login Page Form', () => {
   )
   const username_input = screen.getByRole('textbox', { name: 'username password'})
   expect(username_input).toBeInTheDocument()
+})
+
+test('Signup Page', () => {
+    render(
+        <BrowserRouter>
+            <Signup />
+        </BrowserRouter>
+    )
 })
