@@ -58,7 +58,28 @@ const createUser = async(req, res) => {
             })
         })
 }
+const getUserById = async (req, res) => {
+    try {
+        const user = await User.findOne({_id: req.params.id})
+        if(!user) {
+            return res.status(404).json({error: "User not found"})
+        }
+        res.json(user)
+    }catch (err) {
+        res.status(500).json({error: err})
+    }
+}
+
+const getUsers = async (req, res) => {
+    const users = await User.find({});
+    try {
+        res.send(users);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
 module.exports = {
     checkUser,
-    createUser
+    createUser,
+    getUsers
 }
