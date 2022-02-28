@@ -3,6 +3,7 @@ import Home from './components/Home'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Signup from './components/Signup'
+import Login from './components/Login'
 import Protected from './components/Protected'
 
 const App = () => {
@@ -10,9 +11,10 @@ const App = () => {
         <div className="App">
             <Routes>
                 <Route element={<Protected/>}>
-                    <Route exact path="/signup" element={<Signup />} />
                 </Route>
-                <Route exact path="/Home" element={<Home />} />
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/signup" element={<Signup />} />
+                <Route exact path="/login" element={<Login />} />
             </Routes>
         </div>
     )

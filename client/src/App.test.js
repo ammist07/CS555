@@ -21,3 +21,13 @@ test('Login Page', () => {
       </BrowserRouter>
   )
 })
+
+test('Login Page Form', () => {
+  render(
+      <BrowserRouter>
+          <Login />
+      </BrowserRouter>
+  )
+  const username_input = screen.getByRole('textbox', { name: 'username password'})
+  expect(username_input).toBeInTheDocument()
+})
