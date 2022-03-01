@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 const User = require('../models/user-model')
 
 const checkUser = async (req, res) => {
@@ -21,7 +21,6 @@ const checkUser = async (req, res) => {
 const createUser = async(req, res) => {
     const body = req.body
     body.password = await bcrypt.hash(body.password, 8);
-    console.log(body)
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -29,7 +28,7 @@ const createUser = async(req, res) => {
         })
     }
     const users = await User.find({})
-    
+
     for(let i = 0; i < users.length; i++) {
         if (users[i].name === body.name) {
             return res.json({success: false, message: 'User already exist'})
@@ -39,7 +38,7 @@ const createUser = async(req, res) => {
     const user = await new User(body)
 
     if (!user) {
-        return res.json({ success: false, error: err })
+        return res.json({ success: false, error: 'internal error' })
     }
     user
         .save()
@@ -81,5 +80,6 @@ const getUsers = async (req, res) => {
 module.exports = {
     checkUser,
     createUser,
-    getUsers
+    getUsers,
+    getUserById
 }
