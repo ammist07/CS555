@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useContext, useState, useEffect} from 'react'
+import {Context as UserContext} from "../context/UserContext"
+
 
 const Board = () => {
-
-
 
     const flipCellsAround = (cord) => {
         let boardcurr = board.gameBoard
@@ -22,6 +22,28 @@ const Board = () => {
             ...prev,
             gameBoard: boardcurr,
             hasWon: hasWon
+        }))
+    }
+    const userContext = useContext(UserContext)
+    const [board, setBoard] = useState({
+        rows: 3,
+        cols: 3,
+        flowerChance: 0.25,
+        hasWon: false,
+        gameBoard: [[]],
+        edit: false
+    })
+    const createBoard = async () => {
+        let boardcurr = []
+        for (let y = 0; y < board.rows; y++){
+            let row = []
+            for (let x = 0; x < board.cols; x++){
+                row.push(Math.random() < board.flowerChance)
+            }
+            boardcurr.push(row)
+        }
+        await setBoard(prev => ({
+            ...prev, gameBoard:boardcurr, edit:true
         }))
     }
     return  (
