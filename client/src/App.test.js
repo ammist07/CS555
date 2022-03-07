@@ -4,6 +4,7 @@ import App from './App'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Home from './components/Home'
+import Board from './components/Board'
 import { BrowserRouter } from 'react-router-dom'
 
 test('App Page', () => {
@@ -56,4 +57,12 @@ test('Home Page', () => {
           <Home />
       </BrowserRouter>
   )
+})
+
+test('Board Page', () => {
+    render(
+        <BrowserRouter>
+            <Board />
+        </BrowserRouter>
+    )
 })
