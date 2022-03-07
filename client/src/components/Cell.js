@@ -14,11 +14,17 @@ const Cell = ({isLit, flipCellsAroundMe}) => {
 
     return (
         <td>
-            <div className="Cell" onClick={handleClick}>
-                <LocalFloristIcon id="icon" sx={{ color: 'pink', fontSize: 40 }} />  
-            </div>
+        {
+            isLit ? <div className="Cell" onClick={handleClick}>
+                        <LocalFloristIcon id="icon" sx={{ color: 'pink', fontSize: 40 }} />  
+                    </div> : <div className="Cell" onClick={handleClick}>
+        
+                    </div>
+        
+        }
         </td>
     )
 
 }
-export default Cell
+export default Cell;
+
