@@ -66,3 +66,13 @@ test('Board Page', () => {
         </BrowserRouter>
     )
 })
+
+test('Flower in Cells', () => {
+  render(
+      <BrowserRouter>
+          <Board />
+      </BrowserRouter>
+  )
+  const username_input = screen.getByRole('table', {id: 'icon'})
+  expect(username_input).toBeInTheDocument()
+})
