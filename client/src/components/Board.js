@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react'
 import {Context as UserContext} from "../context/UserContext"
+import Cell from "./Cell";
 
 
 const Board = () => {
@@ -33,6 +34,13 @@ const Board = () => {
         gameBoard: [[]],
         edit: false
     })
+    const [done, setDone] = useState(false)
+    useEffect( () => {
+        createBoard()
+    },[])
+    useEffect( () => {
+        setDone(true)
+    },[board.edit])
     const createBoard = async () => {
         let boardcurr = []
         for (let y = 0; y < board.rows; y++){
@@ -67,11 +75,17 @@ const Board = () => {
                 <tbody>{tblBoard}</tbody>
             </table>
         )
-        
+
     }
     return  (
         <div>
-            Board
+            {
+                board.hasWon ? <div> won </div>:
+                    <div>
+                        <div>Lets Play</div>
+                        {done ? makeTable(): <div>Loading...</div>}
+                    </div>
+            }
         </div>
     )
 }
