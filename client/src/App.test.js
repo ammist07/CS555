@@ -12,7 +12,10 @@ import { Provider as UserProvider } from './context/UserContext'
 test('App Page', () => {
   render(
       <BrowserRouter>
-        <App />
+      <UserProvider>
+      <App />
+      </UserProvider>
+        
       </BrowserRouter>
   )
 })
@@ -56,7 +59,10 @@ test('Home Page', () => {
 
   render(
       <BrowserRouter>
-          <Home />
+      <UserProvider>
+      <Home />
+      </UserProvider>
+          
       </BrowserRouter>
   )
 })

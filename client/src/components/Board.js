@@ -41,6 +41,9 @@ const Board = () => {
     useEffect( () => {
         setDone(true)
     },[board.edit])
+    useEffect(() => {
+		addNewGame()
+	}, [board.hasWon])
     const createBoard = async () => {
         let boardcurr = []
         for (let y = 0; y < board.rows; y++){
