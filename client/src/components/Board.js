@@ -1,10 +1,10 @@
 import React, {useContext, useState, useEffect} from 'react'
 import {Context as UserContext} from "../context/UserContext"
 import Cell from "./Cell";
+import win from './win.mp3'
 
 
 const Board = () => {
-
     const flipCellsAround = (cord) => {
         let boardcurr = board.gameBoard
         let [y, x] = cord.split("-").map(Number)
@@ -77,6 +77,17 @@ const Board = () => {
         )
 
     }
+    let audio_win = new Audio(win)
+    const addNewGame = async () => {
+		if (board.hasWon) {
+			audio_win.play()
+			await apis.addGame({
+				userId: userContext.state.user.id,
+				playedAt: new Date(),
+				gameTime: board.end - board.start,
+			})
+		}
+	}
     return  (
         <div>
             {

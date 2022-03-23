@@ -8,7 +8,7 @@ export const insertUser = (payload) => api.post('/user', payload)
 export const getAllUser = () => api.get('/user')
 export const getUserByID = (id) => api.get(`/user/${id}`)
 export const chechUser = (payload) => api.post('/login', payload)
-
+export const addGame = (payload) => api.post('/game', payload)
 
 const apis = {
     insertUser,
