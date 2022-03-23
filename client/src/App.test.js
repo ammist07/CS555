@@ -6,6 +6,8 @@ import Signup from './components/Signup'
 import Home from './components/Home'
 import Board from './components/Board'
 import { BrowserRouter } from 'react-router-dom'
+import React from "react";
+import { Provider as UserProvider } from './context/UserContext'
 
 test('App Page', () => {
   render(

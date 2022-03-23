@@ -77,9 +77,39 @@ const getUsers = async (req, res) => {
         res.status(500).send(error);
     }
 }
+
+const addNewGame = async (req, res) => {
+    try {
+        const body = req.body
+        console.log(body)
+
+        let user = await User.findOne({ _id: ObjectId(body.userId) })
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' })
+        }
+        const updateInfo = await User.updateOne(
+            { _id: ObjectId(body.userId) },
+            {
+                $push: {
+                    games: {
+                        _id: ObjectId(),
+                        playedAt: new Date(parseInt(body.playedAt)),
+                        gameTime: parseFloat(body.gameTime),
+                    },
+                },
+            }
+        )
+        let userChnaged = await User.findOne({ _id: ObjectId(body.userId) })
+        console.log('ere')
+        res.json(userChnaged)
+    } catch (err) {
+        res.status(500).json({ error: err })
+    }
+}
 module.exports = {
     checkUser,
     createUser,
     getUsers,
-    getUserById
+    getUserById,
+    addNewGame
 }
