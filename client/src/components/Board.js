@@ -2,6 +2,13 @@ import React, {useContext, useState, useEffect} from 'react'
 import {Context as UserContext} from "../context/UserContext"
 import Cell from "./Cell";
 import win from './win.mp3'
+import apis from '../api'
+import Button from '@mui/material/Button'
+import TimeDisplay from './TimeDisplay'
+import { Link } from 'react-router-dom'
+
+
+
 
 
 const Board = () => {
@@ -93,14 +100,28 @@ const Board = () => {
 	}
     return  (
         <div>
-            {
-                board.hasWon ? <div> won </div>:
-                    <div>
-                        <div>Lets Play</div>
-                        {done ? makeTable(): <div>Loading...</div>}
-                    </div>
-            }
-        </div>
+			{board.hasWon ? (
+				<div>
+					<div>Won</div>
+					Time: <TimeDisplay time={board.end - board.start} />
+					<Button
+						data-testid='homebutton'
+						variant='contained'
+						id='paybutton'
+						component={Link}
+						to='/'
+					>
+						Play Again
+					</Button>
+				</div>
+			) : (
+				<div>
+					<div>Lets Play</div>
+					{done ? makeTable() : <div>Loading...</div>}
+				</div>
+			)}
+		</div>
+
     )
 }
 export default Board
