@@ -6,6 +6,7 @@ import Signup from './components/Signup'
 import Login from './components/Login'
 import Protected from './components/Protected'
 import Board from './components/Board'
+import UserProfile from "./components/UserProfile";
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
             <Routes>
                 <Route element={<Protected/>}>
                     <Route exact path="/board" element={<Board />} />
+                    <Route exact path="/profile" element={<UserProfile />} />
                 </Route>
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/signup" element={<Signup />} />

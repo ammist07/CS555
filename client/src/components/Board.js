@@ -12,6 +12,36 @@ import { Link } from 'react-router-dom'
 
 
 const Board = () => {
+
+    const userContext = useContext(UserContext)
+    const [board, setBoard] = useState({
+        rows: 3,
+        cols: 3,
+        flowerChance: 0.25,
+        hasWon: false,
+        gameBoard: [[]],
+        edit: false,
+        start: 0,
+        end: 0,
+    })
+    const [done, setDone] = useState(false)
+    let audio_win = new Audio(win)
+
+    useEffect( () => {
+        createBoard()
+        setBoard((prev) => ({
+            ...prev,
+            start: new Date(),
+        }))
+    },[])
+    useEffect( () => {
+        setDone(true)
+    },[board.edit])
+    useEffect(() => {
+        addNewGame()
+    }, [board.hasWon])
+
+
     const flipCellsAround = (cord) => {
         let boardcurr = board.gameBoard
         let [y, x] = cord.split("-").map(Number)
@@ -29,28 +59,12 @@ const Board = () => {
         setBoard(prev => ({
             ...prev,
             gameBoard: boardcurr,
-            hasWon: hasWon
+            hasWon: hasWon,
+            end: new Date(),
         }))
     }
-    const userContext = useContext(UserContext)
-    const [board, setBoard] = useState({
-        rows: 3,
-        cols: 3,
-        flowerChance: 0.25,
-        hasWon: false,
-        gameBoard: [[]],
-        edit: false
-    })
-    const [done, setDone] = useState(false)
-    useEffect( () => {
-        createBoard()
-    },[])
-    useEffect( () => {
-        setDone(true)
-    },[board.edit])
-    useEffect(() => {
-		addNewGame()
-	}, [board.hasWon])
+
+
     const createBoard = async () => {
         let boardcurr = []
         for (let y = 0; y < board.rows; y++){
@@ -87,10 +101,10 @@ const Board = () => {
         )
 
     }
-    let audio_win = new Audio(win)
+
     const addNewGame = async () => {
 		if (board.hasWon) {
-			audio_win.play()
+			await audio_win.play()
 			await apis.addGame({
 				userId: userContext.state.user.id,
 				playedAt: new Date(),

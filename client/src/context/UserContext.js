@@ -12,6 +12,11 @@ const userReducer = (state, action) => {
                 ...state,
                 isAuthenticated: action.payload,
             }
+        case 'setX':
+            return {
+                ...state,
+                x: action.payload,
+            }
         default:
             return state
     }
@@ -31,11 +36,17 @@ const setIsAuthenticated = (dispatch) => (data) => {
     })
 }
 
+const setX = (dispatch) => (data) => {
+    dispatch({
+        type: 'setX',
+        payload: data,
+    })
+}
+
 export const { Context, Provider } = createDataContext(
-    userReducer,
-    { setUser, setIsAuthenticated },
-    {
+    userReducer, { setUser, setIsAuthenticated, setX }, {
         isAuthenticated: false,
         user: null,
+        x: 3,
     }
 )

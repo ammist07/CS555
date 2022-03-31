@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/user-model')
+const { ObjectId } = require('mongodb')
 
 const checkUser = async (req, res) => {
     const body = req.body
@@ -12,6 +13,7 @@ const checkUser = async (req, res) => {
                     success: true,
                     id: users[i]._id,
                     name: users[i].name,
+                    games: users[i].games.length,
                 })
             }
         }
@@ -27,6 +29,7 @@ const createUser = async(req, res) => {
             error: 'You must provide a username, pass',
         })
     }
+    body.games = []
     const users = await User.find({})
 
     for(let i = 0; i < users.length; i++) {
@@ -81,8 +84,7 @@ const getUsers = async (req, res) => {
 const addNewGame = async (req, res) => {
     try {
         const body = req.body
-        console.log(body)
-
+        
         let user = await User.findOne({ _id: ObjectId(body.userId) })
         if (!user) {
             return res.status(404).json({ error: 'User not found' })

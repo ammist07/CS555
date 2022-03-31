@@ -23,7 +23,8 @@ const Login = () => {
             await userContext.setIsAuthenticated(true)
             await userContext.setUser({
                 id: user.data.id,
-                name: user.data.name
+                name: user.data.name,
+                games: user.data.games,
             })
             navigate('/')
         } else {

@@ -10,77 +10,81 @@ import React from "react";
 import { Provider as UserProvider } from './context/UserContext'
 
 test('App Page', () => {
-  render(
-      <BrowserRouter>
-      <UserProvider>
-      <App />
-      </UserProvider>
-        
-      </BrowserRouter>
-  )
+    render(
+        <BrowserRouter>
+            <UserProvider>
+                <App />
+            </UserProvider>
+
+        </BrowserRouter>
+    )
 })
 
 test('Login Page', () => {
-  render(
-      <BrowserRouter>
-          <Login />
-      </BrowserRouter>
-  )
+    render(
+        <BrowserRouter>
+            <Login />
+        </BrowserRouter>
+    )
 })
 
 test('Signup Page Form', () => {
-  render(
-      <BrowserRouter>
-          <Signup />
-      </BrowserRouter>
-  )
-  const username_input = screen.getByRole('textbox', { name: 'name username password'})
-  expect(username_input).toBeInTheDocument()
+    render(
+        <BrowserRouter>
+            <Signup />
+        </BrowserRouter>
+    )
+    const username_input = screen.getByRole('textbox', { name: 'name username password' })
+    expect(username_input).toBeInTheDocument()
 })
 
 test('Login Page Form', () => {
-  render(
-      <BrowserRouter>
-          <Login />
-      </BrowserRouter>
-  )
-  const username_input = screen.getByRole('textbox', { name: 'username password'})
-  expect(username_input).toBeInTheDocument()
+    render(
+        <BrowserRouter>
+            <Login />
+        </BrowserRouter>
+    )
+    const username_input = screen.getByRole('textbox', { name: 'username password' })
+    expect(username_input).toBeInTheDocument()
 })
 
 test('Signup Page', () => {
-  render(
-      <BrowserRouter>
-          <Signup />
-      </BrowserRouter>
-  )
+    render(
+        <BrowserRouter>
+            <Signup />
+        </BrowserRouter>
+    )
 })
 test('Home Page', () => {
 
-  render(
-      <BrowserRouter>
-      <UserProvider>
-      <Home />
-      </UserProvider>
-          
-      </BrowserRouter>
-  )
+    render(
+        <BrowserRouter>
+            <UserProvider>
+                <Home />
+            </UserProvider>
+
+        </BrowserRouter>
+    )
 })
 
 test('Board Page', () => {
     render(
         <BrowserRouter>
-            <Board />
+            <UserProvider>
+                <Board />
+            </UserProvider>
         </BrowserRouter>
     )
 })
 
 test('Flower in Cells', () => {
-  render(
-      <BrowserRouter>
-          <Board />
-      </BrowserRouter>
-  )
-  const username_input = screen.getByRole('table', {id: 'icon'})
-  expect(username_input).toBeInTheDocument()
+    render(
+        <BrowserRouter>
+         <UserProvider>
+            <Board />
+             </UserProvider>
+        </BrowserRouter>
+    )
+    const username_input = screen.getByRole('table', { id: 'icon' })
+    expect(username_input).toBeInTheDocument()
 })

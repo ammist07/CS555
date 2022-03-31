@@ -14,7 +14,8 @@ const apis = {
     insertUser,
     getAllUser,
     getUserByID,
-    chechUser
+    chechUser,
+    addGame
 }
 
 export default apis
