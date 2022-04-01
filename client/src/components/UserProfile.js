@@ -1,13 +1,21 @@
 import React, { useContext } from 'react'
 import { Context as UserContext } from '../context/UserContext'
+import { Stack, Typography, Paper } from '@mui/material'
 
 const UserProfile = () => {
 	const userContext = useContext(UserContext)
 	return (
-		<div style={{ display: 'flex', flexDirection: 'column' }}>
-			Name: <div>{userContext.state.user.name}</div>
-			Games Played: {userContext.state.user.games}
-		</div>
+		<Paper
+					elevation={3}
+					sx={{
+						padding: 5,
+						backgroundColor: '#1E293B',
+						color: 'white',
+					}}
+				>
+
+				</Paper>
+
 	)
 }
 
