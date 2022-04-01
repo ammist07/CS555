@@ -108,10 +108,43 @@ const addNewGame = async (req, res) => {
         res.status(500).json({ error: err })
     }
 }
+
+const addLeaderBoard = async (req, res) => {
+	try {
+		const temp = {
+			userId: req.body.userId,
+			playedAt: req.body.playedAt,
+			gameTime: req.body.gameTime,
+		}
+		const leader = new LeaderBoard(temp)
+
+		if (!leader) {
+			return res.json({ success: false, error: err })
+		}
+		leader
+			.save()
+			.then(() => {
+				return res.status(200).json({
+					success: true,
+					id: leader._id,
+				})
+			})
+			.catch((error) => {
+				return res.json({
+					success: false,
+					message: 'Score not added!',
+				})
+			})
+	} catch (e) {
+		res.status(500).json({ error: err })
+	}
+}
+
 module.exports = {
     checkUser,
     createUser,
     getUsers,
     getUserById,
-    addNewGame
+    addNewGame,
+    addLeaderBoard
 }
