@@ -88,3 +88,14 @@ test('Flower in Cells', () => {
     const username_input = screen.getByRole('table', { id: 'icon' })
     expect(username_input).toBeInTheDocument()
 })
+test('Cells on Board', () => {
+    render(
+        <BrowserRouter>
+            <UserProvider>
+                <Board/>
+            </UserProvider>
+        </BrowserRouter>
+    )
+    const username_input = screen.getByRole('table')
+    expect(username_input).toBeInTheDocument()
+})
