@@ -88,3 +88,25 @@ test('Flower in Cells', () => {
     const username_input = screen.getByRole('table', { id: 'icon' })
     expect(username_input).toBeInTheDocument()
 })
+test('Cells on Board', () => {
+    render(
+        <BrowserRouter>
+            <UserProvider>
+                <Board/>
+            </UserProvider>
+        </BrowserRouter>
+    )
+    const username_input = screen.getByRole('table')
+    expect(username_input).toBeInTheDocument()
+})
+test('User Check on Board', () => {
+    const state = {
+        isAuthenticated: false,
+    }
+    render(
+        <UserProvider value={state}>
+            <Board/>
+        </UserProvider>
+    )
+    expect(screen.getByText(`Lets Play`)).toBeInTheDocument()
+})
