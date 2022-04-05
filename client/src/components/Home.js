@@ -15,7 +15,11 @@ const Home = () => {
 		userContext.setX(diff)
 		setDone(true)
 	}, [diff])
-	
+	const handleChange = async (event) => {
+		event.preventDefault()
+		setDone(false)
+		await setDiff(parseInt(event.target.value))
+	}
 	const main = (
 		<React.Fragment>
 			<div>
