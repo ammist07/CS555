@@ -10,12 +10,15 @@ export const getUserByID = (id) => api.get(`/user/${id}`)
 export const chechUser = (payload) => api.post('/login', payload)
 export const addGame = (payload) => api.post('/game', payload)
 
+export const addToLeaderboard = (payload) => api.post('/leader', payload)
+export const getAll = (payload) => api.post('/getall', payload)
 const apis = {
     insertUser,
     getAllUser,
     getUserByID,
     chechUser,
-    addGame
+    addGame,addToLeaderboard,
+	getAll
 }
 
 export default apis
