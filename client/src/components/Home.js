@@ -10,6 +10,12 @@ const Home = () => {
     const userContext = useContext(UserContext)
 	const [diff, setDiff] = useState(3)
 	const [done, setDone] = useState(true)
+
+	useEffect(() => {
+		userContext.setX(diff)
+		setDone(true)
+	}, [diff])
+	
 	const main = (
 		<React.Fragment>
 			<div>
