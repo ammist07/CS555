@@ -33,9 +33,9 @@ const Signup = () => {
         <div>
             {error.state ? <Alert severity="error">{error.message}</Alert>: null }
             <form onSubmit={formSubmit}>
-                <TextField name="name" onChange={handleInputChange} value={form.name}  id="filled-basic" label="name" variant="filled" required/>
-                <TextField name="username" onChange={handleInputChange} value={form.username}  id="filled-basic" label="username" variant="filled" required/>
-                <TextField name="password" onChange={handleInputChange} value={form.password}  id="filled-basic" label="password" variant="filled" required/>
+                <TextField name="name" sx={{ backgroundColor: 'white', color: 'black' }} onChange={handleInputChange} value={form.name}  id="filled-basic" label="name" variant="filled" required/>
+                <TextField name="username" sx={{ backgroundColor: 'white', color: 'black' }} onChange={handleInputChange} value={form.username}  id="filled-basic" label="username" variant="filled" required/>
+                <TextField name="password" sx={{ backgroundColor: 'white', color: 'black' }} onChange={handleInputChange} value={form.password}  id="filled-basic" label="password" variant="filled" required/>
                 <Button type="submit" variant="contained">Signup</Button>
                 <Button variant="contained" component={Link} to="/login">Login</Button>
             </form>

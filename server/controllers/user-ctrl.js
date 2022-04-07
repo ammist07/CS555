@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/user-model')
 const { ObjectId } = require('mongodb')
+const LeaderBoard = require('../models/leader-boards')
 
 const checkUser = async (req, res) => {
     const body = req.body
@@ -84,7 +85,7 @@ const getUsers = async (req, res) => {
 const addNewGame = async (req, res) => {
     try {
         const body = req.body
-        
+
         let user = await User.findOne({ _id: ObjectId(body.userId) })
         if (!user) {
             return res.status(404).json({ error: 'User not found' })
@@ -140,11 +141,22 @@ const addLeaderBoard = async (req, res) => {
 	}
 }
 
+const getAllbyId = async (req, res) => {
+    try {
+        const id = req.body.userId
+        const all = await LeaderBoard.find({ userId: id }).sort({ gameTime: 1 })
+        res.json(all)
+    } catch (e) {
+        res.status(500).json({ error: err })
+    }
+}
+
 module.exports = {
     checkUser,
     createUser,
     getUsers,
     getUserById,
     addNewGame,
-    addLeaderBoard
+    addLeaderBoard,
+    getAllbyId
 }

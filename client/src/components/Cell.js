@@ -16,7 +16,7 @@ const Cell = ({isLit, flipCellsAroundMe}) => {
         <td>
             {
                 isLit ? <div className="Cell" onClick={handleClick}>
-                    <LocalFloristIcon id="icon" sx={{color: 'pink', fontSize: 40}}/>
+                    <LocalFloristIcon id="icon" sx={{color: 'blue', fontSize: 40}}/>
                 </div> : <div className="Cell" onClick={handleClick}>
 
                 </div>

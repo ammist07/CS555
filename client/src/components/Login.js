@@ -50,6 +50,7 @@ const Login = () => {
                     required
                     value={form.username}
                     onChange={handleInputChange}
+                    sx={{ backgroundColor: 'white', color: 'black' }}
                 />
                 <TextField
                     id="filled-basic"
@@ -59,6 +60,7 @@ const Login = () => {
                     required
                     value={form.password}
                     onChange={handleInputChange}
+                    sx={{ backgroundColor: 'white', color: 'black' }}
                 />
                 <Button type="submit" variant="contained">
                     Login

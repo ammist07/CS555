@@ -7,7 +7,7 @@ import Login from './components/Login'
 import Protected from './components/Protected'
 import Board from './components/Board'
 import UserProfile from "./components/UserProfile";
-
+import './App.css'
 const App = () => {
     return (
         <div className="App">
