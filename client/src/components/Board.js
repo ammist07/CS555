@@ -8,9 +8,6 @@ import TimeDisplay from './TimeDisplay'
 import { Link } from 'react-router-dom'
 
 
-
-
-
 const Board = () => {
 
     const userContext = useContext(UserContext)
@@ -103,13 +100,19 @@ const Board = () => {
     }
 
     const addNewGame = async () => {
+        let date = Date.now()
 		if (board.hasWon) {
 			await audio_win.play()
 			await apis.addGame({
 				userId: userContext.state.user.id,
-				playedAt: new Date(),
+				playedAt: date,
 				gameTime: board.end - board.start,
 			})
+            await apis.addToLeaderboard({
+                userId: userContext.state.user.id,
+                playedAt: date,
+                gameTime: board.end - board.start,
+            })
 		}
 	}
     return  (

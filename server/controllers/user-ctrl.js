@@ -54,7 +54,7 @@ const createUser = async(req, res) => {
             })
         })
         .catch(error => {
-            console.log('here')
+
             return res.json({
                 success: false,
                 message: 'User not created!',
