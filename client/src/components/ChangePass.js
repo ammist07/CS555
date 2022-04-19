@@ -8,26 +8,26 @@ const ChangePass = () => {
     const userContext = useContext(UserContext)
     let navigate = useNavigate()
     const [form, setForm] = useState({
-        password:''
+        password: ''
     })
     const [error, setError] = useState({
         state: false,
         message: ''
     })
     const formSubmit = async (e) => {
-                e.preventDefault()
-                const user = await apis.changePass({
-                    userId: userContext.state.user.id,
-                    password: form.password
-                })
-                console.log(user)
-                await userContext.setIsAuthenticated(false)
-                await userContext.setUser({})
-            }
-            const handleInputChange = (e) => {
-                const { name, value } = e.target
-                setForm(prev => ({ ...prev, [name]: value }) )
-            }
+        e.preventDefault()
+        const user = await apis.changePass({
+            userId: userContext.state.user.id,
+            password: form.password
+        })
+        console.log(user)
+        await userContext.setIsAuthenticated(false)
+        await userContext.setUser({})
+    }
+    const handleInputChange = (e) => {
+        const {name, value} = e.target
+        setForm(prev => ({...prev, [name]: value}))
+    }
 
     return (
         <div>
