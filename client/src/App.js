@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Protected from './components/Protected'
 import Board from './components/Board'
 import UserProfile from "./components/UserProfile";
+import UserLogout from './UserLogout'
 import './App.css'
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/signup" element={<Signup />} />
                 <Route exact path="/login" element={<Login />} />
+                <Route exact path="/logout" element={<UserLogout />} />
             </Routes>
         </div>
     )

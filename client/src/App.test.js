@@ -110,3 +110,15 @@ test('User Check on Board', () => {
     )
     expect(screen.getByText(`Lets Play`)).toBeInTheDocument()
 })
+
+test('Profile Page test', () => {
+	render(
+		<BrowserRouter>
+			<UserProvider>
+				<Home />
+			</UserProvider>
+		</BrowserRouter>
+	)
+	const playbutton = screen.getByTestId('profilebutton')
+	expect(playbutton).toBeInTheDocument()
+})
