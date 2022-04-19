@@ -151,6 +151,27 @@ const getAllbyId = async (req, res) => {
     }
 }
 
+
+const changePassword = async (req,res) => {
+    try{
+        console.log(req.body)
+        const id = req.body.userId
+        let password = req.body.password
+        password = await bcrypt.hash(password, 8)
+        User.findByIdAndUpdate({ _id: ObjectId(id) },{ password: password }, function(err, result){
+            if(err){
+                console.log('fail')
+                res.send(err)
+            }else{
+                console.log('success')
+                res.json(result)
+            }
+        })
+    }catch (e){
+        res.status(500).json({ error: err })
+    }
+}
+
 module.exports = {
     checkUser,
     createUser,
@@ -158,5 +179,6 @@ module.exports = {
     getUserById,
     addNewGame,
     addLeaderBoard,
-    getAllbyId
+    getAllbyId,
+    changePassword
 }
