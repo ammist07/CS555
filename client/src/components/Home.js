@@ -5,6 +5,7 @@ import { Context as UserContext } from '../context/UserContext'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
+import UserLogout from './UserLogout'
 
 const Home = () => {
     const userContext = useContext(UserContext)
@@ -44,7 +45,6 @@ const Home = () => {
 						Login to Play!
 					</Button>
 				)}
-	
 				<Button
 					data-testid='profilebutton'
 					variant='contained'
@@ -54,6 +54,7 @@ const Home = () => {
 				>
 					Profile
 				</Button>
+				<UserLogout></UserLogout>
 				<br />
 				<br />
 				<br />
