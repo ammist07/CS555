@@ -151,7 +151,6 @@ const getAllbyId = async (req, res) => {
     }
 }
 
-
 const changePassword = async (req,res) => {
     try{
         console.log(req.body)
