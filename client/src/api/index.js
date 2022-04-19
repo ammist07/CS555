@@ -12,13 +12,15 @@ export const addGame = (payload) => api.post('/game', payload)
 
 export const addToLeaderboard = (payload) => api.post('/leader', payload)
 export const getAll = (payload) => api.post('/getall', payload)
+ export const changePass = (payload) => api.post('/changePassword', payload)
 const apis = {
     insertUser,
     getAllUser,
     getUserByID,
     chechUser,
     addGame,addToLeaderboard,
-	getAll
+	getAll,
+    changePass
 }
 
 export default apis
