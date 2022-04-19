@@ -31,7 +31,22 @@ const ChangePass = () => {
 
     return (
         <div>
-            Chnage Pass
+            {error.state ? <Alert severity="error">{error.message}</Alert>: null }
+            <form onSubmit={formSubmit}>
+                <TextField
+                    id="filled-basic"
+                    label="New password"
+                    variant="filled"
+                    name="password"
+                    required
+                    value={form.password}
+                    onChange={handleInputChange}
+                    sx={{ backgroundColor: 'white', color: 'black' }}
+                />
+                <Button variant="contained" type='submit'>
+                    Submit
+                </Button>
+            </form>
         </div>
     )
 }
