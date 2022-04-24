@@ -115,7 +115,7 @@ test('Profile Page test', () => {
 	render(
 		<BrowserRouter>
 			<UserProvider>
-				<Home />
+				<Board />
 			</UserProvider>
 		</BrowserRouter>
 	)
