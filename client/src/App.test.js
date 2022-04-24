@@ -119,6 +119,4 @@ test('Profile Page test', () => {
 			</UserProvider>
 		</BrowserRouter>
 	)
-	const playbutton = screen.getByTestId('profilebutton')
-	expect(playbutton).toBeInTheDocument()
 })
