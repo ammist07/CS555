@@ -20,7 +20,6 @@ const ChangePass = () => {
             userId: userContext.state.user.id,
             password: form.password
         })
-        console.log(user)
         await userContext.setIsAuthenticated(false)
         await userContext.setUser({})
     }

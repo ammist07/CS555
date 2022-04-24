@@ -7,8 +7,9 @@ import Login from './components/Login'
 import Protected from './components/Protected'
 import Board from './components/Board'
 import UserProfile from "./components/UserProfile";
-import UserLogout from './UserLogout'
+import UserLogout from './components/UserLogout'
 import './App.css'
+import ChangePass from "./components/ChangePass";
 const App = () => {
     return (
         <div className="App">
@@ -16,6 +17,7 @@ const App = () => {
                 <Route element={<Protected/>}>
                     <Route exact path="/board" element={<Board />} />
                     <Route exact path="/profile" element={<UserProfile />} />
+                    <Route exact path='change_pass' element={<ChangePass/>} />
                 </Route>
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/signup" element={<Signup />} />
